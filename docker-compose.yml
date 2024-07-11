@@ -1,11 +1,11 @@
-version: '3.8'
+# version: '3.8'
 
 services:
   mysql:
     image: mysql:8.0
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: appButtons
+      MYSQL_ROOT_PASSWORD: appbuttons
       MYSQL_DATABASE: clients
     ports:
       - "3306:3306"
@@ -13,6 +13,7 @@ services:
       - app-network
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   app:
     build: .
@@ -25,7 +26,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/clients
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: appButtons
+      SPRING_DATASOURCE_PASSWORD: appbuttons
 
 networks:
   app-network:
