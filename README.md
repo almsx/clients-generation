@@ -14,11 +14,20 @@ git clone git@github.com:almsx/clients-generation.git
 docker-compose up --build
 ```
 
-## 🚀 En caso de error con MySQL/Docker.
+## 🚀 En caso de error ...
 
-1. En caso de que haya un error con MySQL, comparto las siguientes instrucciones
+En caso de que haya un error con MySQL, comparto las siguientes instrucciones.
+
+1. Ingresar a la Consola de MySQL usando Docker
 
 ```bash
+docker exec -it mysql mysql -u root -p
+```
+
+Y se ejecutan los siguientes comandos:
+
+```bash
+
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'appbuttons';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 FLUSH PRIVILEGES;
